@@ -4,10 +4,11 @@ const { Box, Label, Button, Overlay, Revealer, Stack } = Widget;
 const { execAsync } = Utils;
 const { GLib } = imports.gi;
 import Battery from 'resource:///com/github/Aylur/ags/service/battery.js';
+import PrayerTimesWidget from "../modules/prayertimes.js";
 import { MaterialIcon } from '../../.commonwidgets/materialicon.js';
 import { AnimatedCircProg } from "../../.commonwidgets/cairo_circularprogress.js";
-// import WeatherWidget from '../modules/weather.js';
-// import ActiveApps from '../modules/active_apps.js';
+import WeatherWidget from '../modules/weather.js';
+import ActiveApps from '../modules/active_apps.js';
 import scrolledmodule from '../../.commonwidgets/scrolledmodule.js';
 import BatteryScaleModule from '../modules/battery_scale.js';
 const options = userOptions.asyncGet();
@@ -99,7 +100,7 @@ const Utilities = () => {
             }),
             UtilButton({
                 name: getString('Screen snip'), icon: 'screenshot_region', onClicked: () => {
-                    Utils.execAsync(`${App.configDir}/scripts/grimblast.sh copy area`)
+                    Utils.execAsync(['lunactl', 'screenshot', 'copy', 'area'])
                         .catch(print)
                 }
             }),
@@ -161,12 +162,12 @@ const BatteryModule = () => Box({
         //     scrolledmodule({
         //         hexpand: true,
         //         children:[
-        //             BarGroup({ hexpand:true,child: WeatherWidget() }),
-        //             BarGroup({ hexpand:true,child: ActiveApps() })
+        //             BarGroup({ hexpand:true, child: WeatherWidget() }),
         //         ]
         //     })
         // ] : []),
-        ...(userOptions.asyncGet().bar.elements.showUtils ? [BarGroup({ child: Utilities() })] : []),
+        ...([BarGroup({ child: PrayerTimesWidget()})]),
+        // ...(userOptions.asyncGet().bar.elements.showUtils ? [BarGroup({ child: Utilities() })] : []),
         scrolledmodule({
             children:[
                 // Only show battery if available and enabled in settings
@@ -174,9 +175,9 @@ const BatteryModule = () => Box({
                     [Widget.Box({ vexpand: true, children:[ BarGroup({ child: BarBattery() })] })] :
                     [Widget.Box({})]
                 ),
-                BatteryScaleModule(),
+                // BatteryScaleModule(),
             ]
-        })
+        }),
     ]
 });
 
