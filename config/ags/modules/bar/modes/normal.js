@@ -39,7 +39,7 @@ export const NormalBar = Widget.CenterBox({
         startWidget: Widget.CenterBox({
             startWidget: Widget.Box({
                 className: "bar-bg",
-                css: `border-radius: 15px 0 15px 15px;min-width: 370px;padding: 0px;`,
+                css: `border-radius: 15px 0 15px 15px;min-width: 400px;padding: 0px;`,
                 child: SideModule([Music()]),
             }),
             endWidget: RoundedCorner("topleft", { className: "corner" }),
@@ -57,7 +57,7 @@ export const NormalBar = Widget.CenterBox({
                         Widget.Box({
                             hexpand: true,
                             className: "bar-group bar-group-standalone",
-                            css: `padding: 0 4px; margin: 0px`,
+                            css: `padding: 0 4px; margin: 0 4px`,
                             children: [
                                 ...(workspaces
                                     ? [NormalOptionalWorkspaces()]
@@ -74,7 +74,7 @@ export const NormalBar = Widget.CenterBox({
             startWidget: RoundedCorner("topright", { className: "corner" }),
             endWidget: Widget.Box({
                 className: "bar-bg",
-                css: `border-radius: 0 15px 15px 15px;min-width: 370px;padding: 0;`,
+                css: `border-radius: 0 15px 15px 15px;min-width: 400px;padding: 0;`,
                 child: SideModule([System()]),
             }),
         }),
