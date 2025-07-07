@@ -1,0 +1,381 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+#############
+#   Notes   #
+#############
+
+# This config assumes you have a Nerd Font installed and enabled in your terminal.
+# I use 'FiraCode Nerd Font Mono', but you should be able to use any Nerd Font you like.
+
+################
+#   Settings   #
+################
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+# Maximum time it may take to produce the prompt
+command_timeout = 3000
+
+########################
+#   Webber's colours   #
+########################
+
+# Bright pink: (bg:#bdce80 fg:#2a3500)
+# Middle pink, bright text: (bg:#3f4c0b fg:#d9eb99)
+# Middle pink, faded text: (bg:#3f4c0b fg:#d9eb99)
+# Dark pink, regular text: (bg:#444930 fg:#e0e6c3)
+# Dark pink, highlighted: (bg:#444930 fg:#bdce80)
+
+###############
+#   Prompts   #
+###############
+
+# Right prompt. This is displayed on the right side of the terminal.
+# Colours (i.e. bg and fg) are always listed from left to right.
+#
+# Note: Not supported in Powershell
+# @see: https://starship.rs/advanced-config/#enable-right-prompt
+# right_format = """
+# [](bg:transparent fg:#3f4c0b)\
+# $time\
+# $memory_usage\
+# [](fg:#3f4c0b bg:transparent)\
+# \
+# """
+
+# Left prompt. This is displayed on the left side of the terminal.
+# Colours (i.e. bg and fg) are always listed from left to right.
+format = """
+[](bg:#transparent fg:#bdce80)\
+$os\
+$username\
+[](fg:#bdce80 bg:#3f4c0b)\
+$directory\
+${custom.pregit}\
+$git_branch\
+$git_state\
+$git_metrics\
+$git_status\
+${custom.postgit}\
+${custom.nogit}\
+$package\
+$c\
+$elixir\
+$elm\
+$golang\
+$gradle\
+$haskell\
+$java\
+$julia\
+$nodejs\
+$bun\
+$nim\
+$rust\
+$scala\
+$docker_context\
+$character\
+"""
+
+########################
+#   Special sections   #
+########################
+
+# Exit code indicator
+[character] # The name of the module we are configuring is 'character'
+success_symbol = '[](bg:#3f4c0b fg:#bdce80)[󱇫](bg:#bdce80 fg:#2a3500)[](fg:#bdce80 bg:transparent)'
+error_symbol = '[](bg:#3f4c0b fg:#ffb4ab)[󱇫](bg:#ffb4ab fg:#690005)[](fg:#ffb4ab bg:transparent)'
+format = '$symbol '
+
+# cross-platform way to check if we are in a git repo, takes 200ms
+[custom.nogit]
+when = ''' git rev-parse --git-dir ; test $? = False '''
+format = '[ ](bg:#3f4c0b)'
+disabled = true
+
+# Either `Administrator`, `root` or the current user's username.
+[username]
+show_always = true
+style_user = "bg:#bdce80 fg:#2a3500"
+style_root = "bg:#bdce80 fg:#2a3500"
+format = '[ $user]($style)'
+disabled = false
+
+# Displays a symbol that represents the current operating system
+[os]
+style = "bg:#bdce80 fg:#2a3500"
+format = '[$symbol]($style)'
+disabled = false # This doesn't work in pwsh in Webstorm terminal.
+
+# The current directory
+[directory]
+style = "bg:#3f4c0b fg:#d9eb99"
+format = "[ $path ]($style)"
+truncation_length = 1
+truncation_symbol = "…/"
+
+[hostname]
+ssh_symbol = ""
+
+[memory_usage]
+symbol = "󰍛"
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#3f4c0b"
+format = '[$time]($style)'
+
+#######################
+#   Version control   #
+#######################
+
+
+[git_branch]
+symbol = ""
+style = "bg:#444930 fg:#e0e6c3"
+format = '[](fg:#3f4c0b bg:#444930)[ $symbol](bg:#444930 fg:#bdce80)[ $branch ]($style)'
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+cherry_pick = '[🍒 PICKING](bg:#444930 fg:bold red)'
+rebase = '[ REBASING](bg:#444930 fg:bold green)'
+merge = '[ MERGING](bg:#444930 fg:bold yellow)'
+bisect = '[🔍 BISECTING](bg:#444930 fg:bold blue)'
+am = '[AM](bg:#444930 fg:bold green)'
+am_or_rebase = '[AM/REBASE](bg:#444930 fg:bold green)'
+revert = '[󰕍 REVERTING](bg:#444930 fg:bold red)'
+
+[git_metrics]
+added_style = "bg:#444930 fg:#a1d0c5"
+deleted_style = "bg:#444930 fg:#ffb4ab"
+format = '([+$added ]($added_style))([-$deleted ]($deleted_style))'
+disabled = false
+
+[git_status]
+style = "bg:#444930 fg:#bdce80"
+conflicted = '=' # This branch has merge conflicts.
+ahead = ''
+behind = ''
+diverged = '󱡷'
+up_to_date = ''
+untracked = '?'
+stashed = ''
+modified = ''
+staged = ''
+renamed = '»'
+deleted = '✘'
+format = '([($all_status )($ahead_behind )]($style))[](bg:#444930 fg:#3f4c0b)'
+
+[fossil_branch]
+symbol = ""
+
+[hg_branch]
+symbol = ""
+
+[pijul_channel]
+symbol = ""
+
+############################
+#   Contexts (canonical)   #
+############################
+
+[nodejs]
+symbol = ""
+style = "bg:#3f4c0b fg:#d9eb99"
+format = '[$symbol](bg:#3f4c0b fg:#bdce80)[ ($version) ]($style)'
+
+[bun]
+symbol = "󰅟"
+style = "bg:#3f4c0b fg:#d9eb99"
+format = '[$symbol](bg:#3f4c0b fg:#bdce80)[ ($version) ]($style)'
+
+[docker_context]
+symbol = ""
+style = "bg:#3f4c0b fg:#d9eb99"
+format = '[$symbol](bg:#3f4c0b fg:#bdce80)[ (context) ]($style)'
+
+[package]
+format = '($style)[> $symbol$version ]($style)'
+symbol = '📦 '
+version_format = 'v${raw}'
+style = 'bold 208 bg:#3f4c0b'
+display_private = false
+disabled = true
+################
+#   Contexts   #
+################
+
+[aws]
+symbol = ""
+style = "bg:#3f4c0b fg:#d9eb99"
+format = '[$symbol](bg:#3f4c0b fg:#bdce80)[ ($version) ]($style)'
+
+[c]
+symbol = ""
+style = "bg:#3f4c0b fg:#d9eb99"
+format = '[$symbol](bg:#3f4c0b fg:#bdce80)[ ($version) ]($style)'
+
+[conda]
+symbol = ""
+style = "bg:#3f4c0b fg:#d9eb99"
+format = '[$symbol](bg:#3f4c0b fg:#bdce80)[ ($version) ]($style)'
+
+[dart]
+symbol = ""
+style = "bg:#3f4c0b fg:#d9eb99"
+format = '[$symbol](bg:#3f4c0b fg:#bdce80)[ ($version) ]($style)'
+
+[elixir]
+symbol = ""
+style = "bg:#3f4c0b fg:#d9eb99"
+format = '[$symbol](bg:#3f4c0b fg:#bdce80)[ ($version) ]($style)'
+
+[elm]
+symbol = ""
+style = "bg:#3f4c0b fg:#d9eb99"
+format = '[$symbol](bg:#3f4c0b fg:#bdce80)[ ($version) ]($style)'
+
+[golang]
+symbol = ""
+style = "bg:#3f4c0b fg:#d9eb99"
+format = '[$symbol](bg:#3f4c0b fg:#bdce80)[ ($version) ]($style)'
+
+[gradle]
+style = "bg:#3f4c0b fg:#d9eb99"
+format = '[$symbol](bg:#3f4c0b fg:#bdce80)[ ($version) ]($style)'
+
+[haskell]
+symbol = ""
+style = "bg:#3f4c0b fg:#d9eb99"
+format = '[$symbol](bg:#3f4c0b fg:#bdce80)[ ($version) ]($style)'
+
+[haxe]
+symbol = ""
+style = "bg:#3f4c0b fg:#d9eb99"
+format = '[$symbol](bg:#3f4c0b fg:#bdce80)[ ($version) ]($style)'
+
+[java]
+symbol = ""
+style = "bg:#3f4c0b fg:#d9eb99"
+format = '[$symbol](bg:#3f4c0b fg:#bdce80)[ ($version) ]($style)'
+
+[julia]
+symbol = ""
+style = "bg:#3f4c0b fg:#d9eb99"
+format = '[$symbol](bg:#3f4c0b fg:#bdce80)[ ($version) ]($style)'
+
+[kotlin]
+symbol = ""
+style = "bg:#3f4c0b fg:#d9eb99"
+format = '[$symbol](bg:#3f4c0b fg:#bdce80)[ ($version) ]($style)'
+
+[lua]
+symbol = ""
+style = "bg:#3f4c0b fg:#d9eb99"
+format = '[$symbol](bg:#3f4c0b fg:#bdce80)[ ($version) ]($style)'
+
+[ocaml]
+symbol = ""
+style = "bg:#3f4c0b fg:#d9eb99"
+format = '[$symbol](bg:#3f4c0b fg:#bdce80)[ ($version) ]($style)'
+
+[perl]
+symbol = ""
+style = "bg:#3f4c0b fg:#d9eb99"
+format = '[$symbol](bg:#3f4c0b fg:#bdce80)[ ($version) ]($style)'
+
+[php]
+symbol = ""
+style = "bg:#3f4c0b fg:#d9eb99"
+format = '[$symbol](bg:#3f4c0b fg:#bdce80)[ ($version) ]($style)'
+
+[python]
+symbol = ""
+style = "bg:#3f4c0b fg:#d9eb99"
+format = '[$symbol](bg:#3f4c0b fg:#bdce80)[ ($version) ]($style)'
+
+[rlang]
+symbol = "󰟔"
+style = "bg:#3f4c0b fg:#d9eb99"
+format = '[$symbol](bg:#3f4c0b fg:#bdce80)[ ($version) ]($style)'
+
+[ruby]
+symbol = ""
+style = "bg:#3f4c0b fg:#d9eb99"
+format = '[$symbol](bg:#3f4c0b fg:#bdce80)[ ($version) ]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#3f4c0b fg:#d9eb99"
+format = '[$symbol](bg:#3f4c0b fg:#bdce80)[ ($version) ]($style)'
+
+[scala]
+symbol = ""
+style = "bg:#3f4c0b fg:#d9eb99"
+format = '[$symbol](bg:#3f4c0b fg:#bdce80)[ ($version) ]($style)'
+
+[swift]
+symbol = ""
+style = "bg:#3f4c0b fg:#d9eb99"
+format = '[$symbol](bg:#3f4c0b fg:#bdce80)[ ($version) ]($style)'
+
+[zig]
+symbol = ""
+style = "bg:#3f4c0b fg:#d9eb99"
+format = '[$symbol](bg:#3f4c0b fg:#bdce80)[ ($version) ]($style)'
+
+#############
+#   Other   #
+#############
+
+[nix_shell]
+symbol = ""
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+AlmaLinux = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CachyOS = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Kali = " "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+Nobara = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+RockyLinux = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Void = " "
+Windows = "󰍲 "
