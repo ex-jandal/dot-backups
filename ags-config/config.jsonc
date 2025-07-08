@@ -49,7 +49,7 @@
     "__custom": ["extraGptModels"]
   },
   "animations": {
-    "choreographyDelay": 100,
+    "choreographyDelay": 50,
     "durationSmall": 80,
     "durationLarge": 200,
     "durationHuge": 400
@@ -127,7 +127,7 @@
     "ModuleCalendar": {
       "enabled": true,
       "visible": true,
-      "default": "calendar"
+      "default": "PrayerTimes"
     },
     "showAnimeCat": false,
     "centerModules": {
@@ -136,7 +136,6 @@
         "audioControls",
         "powerProfiles",
         "taskManager",
-        "vpn",
         "vpnGate",
         "bluetooth",
         "wifiNetworks",
@@ -149,7 +148,7 @@
         "enabled": true
       },
       "audioControls": {
-        "enabled": false
+        "enabled": true
       },
       "powerProfiles": {
         "enabled": true
@@ -204,7 +203,7 @@
           "base_url": "https://app.oxyapi.uk/v1/chat/completions",
           "key_get_url": "https://discord.com/invite/kM6MaCqGKA",
           "key_file": "oxygen_key.txt",
-          "model": "deepseek-r1"
+          "model": "gpt-4o"
         },
         "chatGPT": {
           "name": "OpenAI (GPT-3.5)",
@@ -227,7 +226,7 @@
         "deepseek-r1": {
           "name": "DeepSeek R1",
           "logo_name": "openrouter-symbolic",
-          "description": "microsoft/phi-4 via OpenRouter",
+          "description": "DeepSeek R1 via OpenRouter",
           "base_url": "https://openrouter.ai/api/v1/chat/completions",
           "key_get_url": "https://openrouter.ai/keys",
           "key_file": "openrouter_key.txt",
@@ -360,7 +359,7 @@
       "aiSearch": true,
       "webSearch": true
     },
-    "engineBaseUrl": "https://www.duckduckgo.com/search?q=",
+    "engineBaseUrl": "https://www.google.com/search?q=",
     "excludedSites": ["quora.com"]
   },
   "timers": {
@@ -404,7 +403,7 @@
     "style": "english"
   },
   "dock": {
-    "enabled": true,
+    "enabled": false,
     "hiddenThickness": 1,
     "dockSize": 36,
     "pinnedApps": [
@@ -520,7 +519,7 @@
     "nightLightTemp": "2000",
     "clickCloseRegion": true,
     "sideLeftPin": true,
-    "cornerRadius": "25",
+    "cornerRadius": "20",
     "widgetCorners": false,
     "todoPath": "Documents/HyprLuna/TODOS.md",
     "recordingPath": "/Videos/Records",
