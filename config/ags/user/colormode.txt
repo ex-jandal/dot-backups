@@ -1,7 +1,0 @@
-dark
-transparent
-scheme-fruit-salad
-gruvbox
-border
-vibrant
-intense
