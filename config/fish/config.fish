@@ -30,3 +30,4 @@ alias config="nvim ~/.ags/config.json"
 alias default="micro ~/.config/ags/modules/.configuration/user_options.default.json"
 alias colors="kitty @ set-colors -a -c ~/.cache/ags/user/generated/kitty-colors.conf"
 zoxide init fish | source
+fish_vi_key_bindings

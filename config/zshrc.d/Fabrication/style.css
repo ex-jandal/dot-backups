@@ -1,0 +1,330 @@
+@import "matugen.css";
+
+* {
+    all: unset;
+    color: var(--foreground);
+    font-size: 16px;
+    font-family: "Jost*", sans-serif;
+}
+
+#bar-inner {
+    border: solid 2px;
+    border-color: var(--border-color);
+    background-color: var(--window-bg);
+    min-height: 28px;
+}
+
+#workspaces {
+    padding: 6px 0;
+    min-width: 0px;
+    background-color: var(--module-bg);
+}
+
+#workspaces > button {
+    padding: 0px 8px;
+    transition: padding 0.05s steps(8);
+    background-color: var(--ws-inactive);
+}
+
+#workspaces > button > label {
+    font-size: 0px;
+}
+
+#workspaces > button:hover {
+    background-color: var(--ws-hover);
+}
+
+#workspaces > button.urgent {
+    background-color: var(--ws-urgent);
+}
+
+#workspaces > button.active {
+    background-color: var(--ws-active);
+}
+
+#workspaces > button.empty {
+    background-color: var(--ws-empty);
+}
+
+#system-status {
+    padding: 2px 15px;
+    background-color: var(--window-bg);
+    border-radius: 20px 0 20px 20px;
+}
+
+#cpu-progress-bar,
+#ram-progress-bar,
+#volume-progress-bar {
+    color: transparent;
+    background-color: transparent;
+}
+
+#cpu-progress-bar {
+    border: solid 0px alpha(var(--color9), 0.8);
+}
+
+#ram-progress-bar,
+#volume-progress-bar {
+    border: solid 0px var(--border-color);
+}
+
+#date-time,
+#hyprland-language,
+#hyprland-window {
+    padding: 0px 8px;
+}
+
+menu > menuitem > label,
+#date-time > label,
+#hyprland-language > label,
+#hyprland-window > label {
+    font-weight: 700;
+}
+
+#system-tray {
+    padding: 2px 4px;
+    background-color: var(--module-bg);
+}
+
+menu {
+    border: solid 2px;
+    border-radius: 10px;
+    border-color: var(--border-color);
+    background-color: var(--window-bg);
+}
+
+menu > menuitem {
+    border-radius: 0px;
+    background-color: var(--module-bg);
+    padding: 6px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+menu > menuitem:first-child {
+    margin-top: 1px;
+    border-radius: 8px 8px 0px 0px;
+}
+
+menu > menuitem:last-child {
+    margin-bottom: 1px;
+    border-radius: 0px 0px 8px 8px;
+}
+
+menu > menuitem:hover {
+    background-color: var(--border-color);
+}
+
+tooltip {
+    border: solid 2px;
+    border-color: var(--border-color);
+    background-color: var(--window-bg);
+    border-radius: 25px;
+}
+
+tooltip > * {
+    padding: 2px 4px;
+}
+
+#start-container,
+#center-container,
+#end-container {
+    padding: 4px 13px;
+    background-color: var(--window-bg);
+    min-height: 28px;
+}
+
+#center-container {
+    margin-top: 3px;
+    border-radius: 20px;
+    /* border: solid 2px var(--border-color); */
+}
+#window-icon {
+    margin-right: 5px;
+}
+
+#workspace-button {
+    border-radius: 25px;
+}
+
+#start-container {
+    border-radius: 25px 0 25px 25px;
+}
+
+#end-container {
+    border-radius: 0 25px 25px 25px;
+}
+
+#app-launcher-bar-button {
+    background-color: var(--background);
+    border-radius: 100;
+    padding: 6px 20px;
+    margin-top: 3px;
+}
+
+#corner {
+    background-image: none;
+    background-color: #150d16;
+}
+
+#status-container {
+    background-color: var(--window-bg);
+    border-radius: 25px 0px 25px 25px;
+    padding: 5px 10px;
+    margin: 0 50px;
+}
+
+#date-time {
+    padding: 0px 15px;
+    background-color: var(--window-bg);
+    border-radius: 0px 25px 25px 25px;
+}
+
+#notification {
+    padding: 1rem;
+    /* border: solid 1px var(--border-color); */
+    border-radius: 1.2rem;
+    background-color: var(--background);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#notification .summary {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+#notification .body {
+    color: darker(var(--foreground));
+    font-weight: normal;
+}
+
+#notify-button {
+    font-weight: 600;
+    border-radius: 3rem;
+    background-color: var(--button-color);
+    padding: 0.6rem 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+#notify-button:hover {
+    background-color: lighter(var(--button-color));
+}
+
+#ActiveWindow {
+    font-weight: 700;
+}
+
+#window-inner {
+    border: solid 2px;
+    border-color: var(--color11);
+    background-color: var(--window-bg);
+    border-radius: 100px;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+#date-time > label {
+    font-weight: 700;
+}
+
+#header {
+    border: solid 1px var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0px 18px 23px -6px rgba(0, 0, 0, 0.75);
+    background: linear-gradient(
+        90deg,
+        alpha(var(--color11), 0.2),
+        alpha(var(--background), 0.2),
+        var(--module-bg)
+    );
+}
+
+#profile-pic {
+    background-color: alpha(var(--color11), 0.2);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 6px;
+    padding: 32px;
+    margin: 4px;
+}
+
+#progress-bar {
+    color: var(--module-bg);
+    border: solid 10px var(--border-color);
+}
+
+#progress-bar-sep {
+    padding: 4px;
+    margin: 16px 0px;
+    border-radius: 100px;
+    background-color: var(--module-bg);
+}
+
+#progress-bar-container {
+    background-color: var(--module-bg);
+    border-radius: 100px;
+    padding: 8px;
+}
+
+/* الحاوية الرئيسية */
+#app-launcher {
+    background-color: var(--background);
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* نفس الظل */
+}
+
+/* الهيدر (يحتوي على حقل البحث وزر الإغلاق) */
+#app-launcher-header {
+    background-color: var(--color0); /* شبه لون مخفف */
+    padding: 4px;
+    border-radius: 4px;
+}
+
+/* فتحات التطبيقات */
+#app-launcher-slot {
+    background-color: var(--color0);
+    padding: 8px;
+    border-radius: 4px;
+    margin: 2px;
+    color: var(--foreground);
+}
+
+#app-launcher-slot:hover {
+    background-color: var(--color1); /* لون التحويم */
+}
+
+#app-launcher-slot:active {
+    background-color: var(--ws-active); /* لون الضغط */
+}
+
+/* الصور (الأيقونات) */
+#app-launcher-slot {
+    margin: 4px;
+}
+
+#dw-clock > label {
+    font-size: 150px;
+    font-weight: 900;
+    transition: color 0.5s ease;
+}
+
+#dw-date > label {
+    font-size: 50px;
+    margin-bottom: -18px;
+    transition: color 0.5s ease;
+}
+
+#screen-corner {
+    background-color: var(--background);
+}
+
+#all-corners {
+    border: solid 100px #fff;
+}
+
+#tet,#screen-edges {
+    margin: 100px;
+}
