@@ -15,14 +15,14 @@ const workspaces = opts.bar.elements.showWorkspaces;
 const indicators = opts.bar.elements.showIndicators;
 
 export const NormalBar = Widget.CenterBox({
-    className: "shadow-window",
+    // className: "shadow-window",
     startWidget: Widget.CenterBox({
         startWidget: Widget.CenterBox({
             hexpand: true,
             vexpand: true,
             centerWidget: RoundedCorner("topleft", { className: "corner" }),
             startWidget: Widget.Box({
-                css: `border-radius: 0 0 15px 0; min-width: 250px; padding-left: 10px;`,
+                css: `border-radius: 0 0 15px 0; min-width: 250px; padding-left: 20px;`,
                 className: "bar-bg",
                 children: [
                     ...(userOptions.asyncGet().bar.elements.showWindowTitle
@@ -39,7 +39,7 @@ export const NormalBar = Widget.CenterBox({
         startWidget: Widget.CenterBox({
             startWidget: Widget.Box({
                 className: "bar-bg",
-                css: `border-radius: 15px 0 15px 15px;min-width: 400px;padding: 0px;`,
+                css: `border-radius: 15px 0 15px 15px; min-width: 400px; padding: 0 4px;`,
                 child: SideModule([Music()]),
             }),
             endWidget: RoundedCorner("topleft", { className: "corner" }),
@@ -57,7 +57,7 @@ export const NormalBar = Widget.CenterBox({
                         Widget.Box({
                             hexpand: true,
                             className: "bar-group bar-group-standalone",
-                            css: `padding: 0 4px; margin: 0 4px`,
+                            css: `padding:0 12px; margin: 4px 5px`,
                             children: [
                                 ...(workspaces
                                     ? [NormalOptionalWorkspaces()]
@@ -74,7 +74,7 @@ export const NormalBar = Widget.CenterBox({
             startWidget: RoundedCorner("topright", { className: "corner" }),
             endWidget: Widget.Box({
                 className: "bar-bg",
-                css: `border-radius: 0 15px 15px 15px;min-width: 400px;padding: 0;`,
+                css: `border-radius: 0 15px 15px 15px; min-width: 400px; padding: 0 4px;`,
                 child: SideModule([System()]),
             }),
         }),
@@ -84,7 +84,7 @@ export const NormalBar = Widget.CenterBox({
         endWidget: Widget.CenterBox({
             centerWidget: RoundedCorner("topright", { className: "corner" }),
             endWidget: Widget.Box({
-              css: `border-radius: 0 0 0 15px`,
+              css: `border-radius: 0 0 0 15px; min-width: 250px;`,
                 className: "bar-bg",
                 children: [...(indicators ? [Indicators()] : [])],
             }),

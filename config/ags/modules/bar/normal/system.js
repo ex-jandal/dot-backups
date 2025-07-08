@@ -4,11 +4,11 @@ const { Box, Label, Button, Overlay, Revealer, Stack } = Widget;
 const { execAsync } = Utils;
 const { GLib } = imports.gi;
 import Battery from 'resource:///com/github/Aylur/ags/service/battery.js';
-import PrayerTimesWidget from "../modules/prayertimes.js";
 import { MaterialIcon } from '../../.commonwidgets/materialicon.js';
 import { AnimatedCircProg } from "../../.commonwidgets/cairo_circularprogress.js";
-import WeatherWidget from '../modules/weather.js';
-import ActiveApps from '../modules/active_apps.js';
+import PrayerTimesWidget from "../modules/prayertimes.js";
+// import WeatherWidget from '../modules/weather.js';
+// import ActiveApps from '../modules/active_apps.js';
 import scrolledmodule from '../../.commonwidgets/scrolledmodule.js';
 import BatteryScaleModule from '../modules/battery_scale.js';
 const options = userOptions.asyncGet();
@@ -162,7 +162,8 @@ const BatteryModule = () => Box({
         //     scrolledmodule({
         //         hexpand: true,
         //         children:[
-        //             BarGroup({ hexpand:true, child: WeatherWidget() }),
+        //             BarGroup({ hexpand:true,child: WeatherWidget() }),
+        //             BarGroup({ hexpand:true,child: ActiveApps() })
         //         ]
         //     })
         // ] : []),
@@ -177,7 +178,7 @@ const BatteryModule = () => Box({
                 ),
                 // BatteryScaleModule(),
             ]
-        }),
+        })
     ]
 });
 

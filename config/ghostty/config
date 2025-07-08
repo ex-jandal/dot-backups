@@ -1,7 +1,7 @@
 theme = material
 font-family = "Geist Mono"
-font-size = 15
-window-decoration = true
+# font-size = 12
+ window-decoration = true
 command = fish
 window-padding-balance = true
 window-padding-x = 10
