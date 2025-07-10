@@ -16,7 +16,7 @@ const QuoteWidget = () => {
         wrapMode: 'word_char',  // Changed to word_char for better wrapping
         widthChars: 40,    // Force width to roughly 12rem - increased for longer quotes
         maxWidthChars: 50, // Maximum width in characters - increased for longer quotes
-        css: 'font-size: 1.3em; color: #333333;', // Increased font size from 0.9em to 1.1em
+        css: 'font-size: 1.3em;', // Increased font size from 0.9em to 1.1em
         // Removed ellipsize to allow text to wrap to new lines instead of truncating
     });
 
