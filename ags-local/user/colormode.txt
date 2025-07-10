@@ -1,0 +1,7 @@
+dark
+transparent
+scheme-tonal-spot
+gruvbox
+border
+vibrant
+intense
